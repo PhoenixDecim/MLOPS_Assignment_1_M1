@@ -1,5 +1,6 @@
 # MLOPS Assignment 1
 ## M1
+![CI](https://github.com/PhoenixDecim/MLOPS_Assignment_1_M1/actions/workflows/ci_cd_pipeline.yml/badge.svg?branch=main)
 ### Description
 A simple machine learning project that includes the following steps:
 - load a dataset
