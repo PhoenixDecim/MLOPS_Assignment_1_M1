@@ -17,7 +17,8 @@ class TestPredict(unittest.TestCase):
             "Number of predictions doesn't match the number of inputs",
         )
         self.assertTrue(
-            all(isinstance(p, str) for p in predictions), "Predictions are not strings"
+            all(isinstance(p, str) for p in predictions),
+            "Predictions are not strings"
         )
 
 
