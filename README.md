@@ -18,7 +18,8 @@ pip install -r requirements.txt
 - Run the `main.py` that does all the steps mentioned above.
 ```bash
 cd ml_iris
-python3 src/main.py
+python3 src/main.py --model <model_name>
+# model name can be either logistic_regression or random_forest
 ```
 ### Test
 - Run the tests using the following command.
