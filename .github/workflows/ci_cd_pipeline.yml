@@ -41,3 +41,17 @@ jobs:
       - name: Run Tests
         run: |
           python -m unittest discover -s tests -p "test_*.py"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint, test]  # Ensure linting and testing complete before deploying
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Trigger Render Deploy
+        run: |
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{"serviceId": "srv-cu8l5l8gph6c73dnrcig"}' \
+          https://api.render.com/v1/services/srv-cu8l5l8gph6c73dnrcig/deploys
