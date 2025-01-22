@@ -42,5 +42,14 @@ curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -
 # request - random_forest
 curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d "{\"sepal_length\": 5.1, \"sepal_width\": 3.5, \"petal_length\": 1.4, \"petal_width\": 0.2, \"model_name\": \"random_forest\"}"
 # response
-{"model":"logistic_regression","prediction":"Setosa"}
+{"model":"random_forest","prediction":"Setosa"}
+```
+### Deployment to Render
+- The predict API provides real-time predictions for the Iris dataset using two machine learning models: Logistic Regression and Random Forest Classifier. Use the following command to access the API:
+```bash
+# request - logistic_regression
+curl -X POST https://mlops-assignment-1-m1.onrender.com/predict -H "Content-Type: application/json" -d "{\"sepal_length\": 5.1, \"sepal_width\": 3.5, \"petal_length\": 1.4, \"petal_width\": 0.2, \"model_name\": \"logistic_regression\"}"
+
+# request - random_forest
+curl -X POST https://mlops-assignment-1-m1.onrender.com/predict -H "Content-Type: application/json" -d "{\"sepal_length\": 5.1, \"sepal_width\": 3.5, \"petal_length\": 1.4, \"petal_width\": 0.2, \"model_name\": \"random_forest\"}"
 ```
