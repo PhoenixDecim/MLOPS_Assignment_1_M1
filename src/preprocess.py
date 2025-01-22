@@ -1,5 +1,6 @@
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+import joblib
 
 
 def preprocess_data(data):
@@ -23,5 +24,6 @@ def preprocess_data(data):
     scaler = StandardScaler()
     print("Applying standard scaler to the input values.\n")
     X_scaled = scaler.fit_transform(X)
+    joblib.dump(scaler, "models/standard_scaler.joblib")
     X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
     return X_scaled, y
