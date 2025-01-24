@@ -14,8 +14,17 @@ parser.add_argument(
     required=True,
     help="Available models: 'logistic_regression' or 'random_forest'",
 )
+parser.add_argument("--max_iter", type=int, default=200)
+parser.add_argument("--n_estimators", type=int, default=100)
+parser.add_argument("--random_state", type=int, default=42)
 args = parser.parse_args()
 model_name = args.model
+model_params = {}
+if model_name == "logistic_regression":
+    model_params["max_iter"] = args.max_iter
+elif model_name == "random_forest":
+    model_params["n_estimators"] = args.n_estimators
+    model_params["random_state"] = args.random_state
 if model_name not in ["logistic_regression", "random_forest"]:
     raise ValueError(
         f"Unsupported model name: {model_name}. Choose 'logistic_regression'"
@@ -37,7 +46,7 @@ print(f"Size of X_test: {X_test.shape}")
 print(f"Size of y_train: {y_train.shape}")
 print(f"Size of y_test: {y_test.shape}")
 print("\n4. Training the Logistic Regression model")
-model = train_model(X_train, y_train, model_name)
+model = train_model(X_train, y_train, model_name, **model_params)
 print("\n5. Saving the model")
 save_status = save_model(model, path)
 print("\n6. Evaluating the model\n")
